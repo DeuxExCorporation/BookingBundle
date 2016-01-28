@@ -1,0 +1,14 @@
+services:
+    booking.service:
+        class: CarlosGude\BookingBundle\Services\BookingService
+        arguments:
+                - "%app.booking%"
+                - "@doctrine.orm.default_entity_manager"
+                - "@session.flash_bag"
+
+    email.service:
+        class: CarlosGude\BookingBundle\Services\EmailService
+        arguments:
+                - "@swiftmailer.mailer.default"
+                - "@templating"
+                - "%app.booking%"
