@@ -7,11 +7,9 @@
  */
 namespace CarlosGude\BookingBundle\EntitiesInterfaces;
 
-interface ElementBookingInterfaces
+interface ElementBookingInterface
 {
     public function getProperty();
 
     public function getQuantity();
-
-
 }

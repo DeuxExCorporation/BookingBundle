@@ -126,7 +126,7 @@ class CreateBookingCommand extends ContainerAwareCommand
                                             if (is_string($answer))
                                                 $answer = $bookingElementsRepository->findOneByName($answer);
 
-                                            if (is_null($answer) or !is_object($answer))
+                                            if (is_null($answer) || !is_object($answer))
                                                 throw new \RuntimeException('The element do not exist');
 
                                             return $answer;

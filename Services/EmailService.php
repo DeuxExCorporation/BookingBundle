@@ -26,7 +26,7 @@ class EmailService
 		$this->bookingConfig = $bookingConfig;
 	}
 
-	//TODO: Pendiente, añadir mensaje de traducción
+	//TODO: 1. Pendiente, aÃ±adir mensaje de traducciÃ³n
 	public function bookingEmail($booking)
 	{
 		$toEmail = $booking->getEmailUser();

@@ -2,7 +2,7 @@
 
 namespace CarlosGude\BookingBundle\Entity;
 
-use CarlosGude\BookingBundle\EntitiesInterfaces\BookingInterfaces;
+use CarlosGude\BookingBundle\EntitiesInterfaces\BookingInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="booking_room")
  * @ORM\Entity(repositoryClass="CarlosGude\BookingBundle\Repository\BookingRoomRepository")
  */
-class BookingRoom implements  BookingInterfaces
+class BookingRoom implements  BookingInterface
 {
     /**
      * @var int

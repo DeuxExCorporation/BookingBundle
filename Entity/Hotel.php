@@ -2,7 +2,7 @@
 
 namespace CarlosGude\BookingBundle\Entity;
 
-use CarlosGude\BookingBundle\EntitiesInterfaces\MasterElementInterfaces;
+use CarlosGude\BookingBundle\EntitiesInterfaces\MasterElementInterface;
 use Doctrine\ORM\Mapping as ORM;
 use CarlosGude\BookingBundle\Entity\BaseEntity as Base;
 /**
@@ -11,7 +11,7 @@ use CarlosGude\BookingBundle\Entity\BaseEntity as Base;
  * @ORM\Table(name="hotel")
  * @ORM\Entity(repositoryClass="CarlosGude\BookingBundle\Repository\HotelRepository")
  */
-class Hotel extends  Base implements  MasterElementInterfaces
+class Hotel extends  Base implements  MasterElementInterface
 {
 
     /**

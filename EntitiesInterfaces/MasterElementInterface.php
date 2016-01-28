@@ -7,7 +7,7 @@
  */
 namespace CarlosGude\BookingBundle\EntitiesInterfaces;
 
-interface MasterElementInterfaces
+interface MasterElementInterface
 {
     public function getName();
 

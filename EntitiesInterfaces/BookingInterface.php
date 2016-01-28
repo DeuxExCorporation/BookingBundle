@@ -7,7 +7,7 @@
  */
 namespace CarlosGude\BookingBundle\EntitiesInterfaces;
 
-interface BookingInterfaces
+interface BookingInterface
 {
     public function getDateStart();
 
@@ -22,6 +22,5 @@ interface BookingInterfaces
     public function getTotal();
 
     public function getUserEmail();
-
 
 }

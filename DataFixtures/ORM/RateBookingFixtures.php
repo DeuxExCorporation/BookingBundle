@@ -28,7 +28,7 @@ class RateBookingFixtures extends AbstractFixture implements OrderedFixtureInter
                  ->setDescription('descripcion')
                  ->setRate(rand(10,20))
                  ->setBookingElement($room)
-                 ->setIsDefault(true)
+                 ->setDefault(true)
                  ->setStatus(true)
                 ;
 

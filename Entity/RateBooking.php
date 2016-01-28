@@ -74,9 +74,9 @@ class RateBooking implements  RateBookingInterface
     /**
      * @var bool
      *
-     * @ORM\Column(name="isDefault", type="boolean")
+     * @ORM\Column(name="default", type="boolean")
      */
-    private $isDefault;
+    private $default;
 
 
 
@@ -241,9 +241,9 @@ class RateBooking implements  RateBookingInterface
      *
      * @return RateBooking
      */
-    public function setIsDefault($isDefault)
+    public function setDefault($default)
     {
-        $this->isDefault = $isDefault;
+        $this->default = $default;
 
         return $this;
     }
@@ -253,9 +253,9 @@ class RateBooking implements  RateBookingInterface
      *
      * @return boolean
      */
-    public function getIsDefault()
+    public function getDefault()
     {
-        return $this->isDefault;
+        return $this->default;
     }
 
     /**

@@ -13,13 +13,10 @@ interface RateBookingInterface
 
     public function getDateEnd();
 
-    public function getIsDefault();
+    public function getDefault();
 
     public function getRate();
 
     public function getBookingElement();
-
-
-
 
 }
