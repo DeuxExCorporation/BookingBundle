@@ -27,13 +27,13 @@ Session.vim
 # eclipse
 *.pydevproject
 .project
-.metadata
+
 bin/**
 tmp/**
 tmp/**/*
 *.tmp
 *.bak
-*.swp
+
 *~.nib
 local.properties
 .classpath
@@ -44,7 +44,7 @@ local.properties
 .buildpath
  
 # phpstorm
-.idea/
+.idea/*
  
 # textmate
 *.tmproj
@@ -66,22 +66,22 @@ nb-configuration.xml
  
 # -- Sistemas Operativos ------------------------------
 # Windows
-Thumbs.db
-ehthumbs.db
+
+
 Desktop.ini
 $RECYCLE.BIN/
  
 # Linux
-.*
+
 !.gitignore
 !.htaccess
 *~
  
 # Mac OS X
-.DS_Store
+
 .AppleDouble
 .LSOverride
-Icon
+
 ._*
 .Spotlight-V100
 .Trashes
