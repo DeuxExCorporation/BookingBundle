@@ -89,7 +89,7 @@ class BookingService
      */
     public function saveEntity($entity)
     {
-        if (!is_object($entity) or ! $entity instanceof BookingRoom) throw new HttpException(500,$entity. " is not a a object");
+        if (!is_object($entity) || ! $entity instanceof BookingRoom) throw new HttpException(500,$entity. " is not a a object");
         if ($this->getBookingConfiguration('autoSaveBooking'))
         {
             $this->em->persist($entity);

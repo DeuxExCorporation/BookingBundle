@@ -1,7 +1,7 @@
 <?php
 
 namespace CarlosGude\BookingBundle\Repository;
-use CarlosGude\BookingBundle\Entity\BookingRoom;
+
 
 /**
  * RoomTypesRepository
