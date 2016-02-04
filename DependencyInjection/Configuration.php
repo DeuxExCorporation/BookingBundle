@@ -11,7 +11,6 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/configuration.html}
  *
- * TODO: 2. Crear varaible para la plantilla del email reservas.
  */
 class Configuration implements ConfigurationInterface
 {
@@ -56,6 +55,21 @@ class Configuration implements ConfigurationInterface
                     ->scalarNode('emailTemplate')
                         ->defaultValue('CarlosGudeBookingBundle:Email:booking.html.twig')
                         ->cannotBeEmpty()
+                    ->end()
+                    ->scalarNode('listBookingsEmailTemplate')
+                        ->defaultValue('CarlosGudeBookingBundle:Email:listBookings.html.twig')
+                        ->cannotBeEmpty()
+                    ->end()
+                    ->scalarNode('bookingEmailSubject')
+                        ->defaultValue('Detalles de la reserva')
+                        ->cannotBeEmpty()
+                    ->end()
+                    ->scalarNode('bookingListEmailSubject')
+                        ->defaultValue('Listado de las reservas ')
+                        ->cannotBeEmpty()
+                    ->end()
+                    ->integerNode('taxBooking')
+                        ->defaultValue(23)
                     ->end()
                     ->arrayNode('class')
                         ->children()

@@ -74,9 +74,9 @@ class RateBooking implements  RateBookingInterface
     /**
      * @var bool
      *
-     * @ORM\Column(name="default", type="boolean")
+     * @ORM\Column(name="standard", type="boolean")
      */
-    private $default;
+    private $standard;
 
 
 
@@ -224,39 +224,8 @@ class RateBooking implements  RateBookingInterface
         return $this;
     }
 
-    /**
-     * Get status
-     *
-     * @return boolean
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
 
-    /**
-     * Set isDefault
-     *
-     * @param boolean $isDefault
-     *
-     * @return RateBooking
-     */
-    public function setDefault($default)
-    {
-        $this->default = $default;
 
-        return $this;
-    }
-
-    /**
-     * Get isDefault
-     *
-     * @return boolean
-     */
-    public function getDefault()
-    {
-        return $this->default;
-    }
 
     /**
      * Set bookingElement
@@ -280,5 +249,39 @@ class RateBooking implements  RateBookingInterface
     public function getBookingElement()
     {
         return $this->bookingElement;
+    }
+
+    /**
+     * Get status
+     *
+     * @return boolean
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set standard
+     *
+     * @param boolean $standard
+     *
+     * @return RateBooking
+     */
+    public function setStandard($standard)
+    {
+        $this->standard = $standard;
+
+        return $this;
+    }
+
+    /**
+     * Get standard
+     *
+     * @return boolean
+     */
+    public function getStandard()
+    {
+        return $this->standard;
     }
 }

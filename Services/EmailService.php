@@ -26,13 +26,26 @@ class EmailService
 		$this->bookingConfig = $bookingConfig;
 	}
 
-	//TODO: 1. Pendiente, añadir mensaje de traducción
+
 	public function bookingEmail($booking)
 	{
 		$toEmail = $booking->getEmailUser();
-		$subject = '';
+		$subject = $this->bookingConfig['bookingEmailSubject'];
 		$template = $this->twig->render($this->bookingConfig['emailTemplate'],['booking' =>$booking]);
 		$from = $booking->getBookingElement()->getProperty()->getEmailBooking();
+
+		$this->sendEmail($toEmail,$subject,$template, $from);
+
+		return true;
+	}
+
+	public function listBookingsEmail($bookings)
+	{
+		$today = new \DateTime("now");
+		$toEmail = 'carlos.sgude@gmail.com';
+		$subject = $this->bookingConfig['bookingListEmailSubject'] . $today->format('d/m/Y');
+		$template = $this->twig->render($this->bookingConfig['listBookingsEmailTemplate'],['bookings' =>$bookings]);
+		$from = 'carlos.sgude@gmail.com';
 
 		$this->sendEmail($toEmail,$subject,$template, $from);
 

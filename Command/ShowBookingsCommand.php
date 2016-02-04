@@ -49,6 +49,12 @@ class ShowBookingsCommand extends ContainerAwareCommand
         }
 
         $this->renderTable($output,$bookings);
+
+        if ($this->getContainer()->get('email.service')->listBookingsEmail($bookings))
+            $output->writeln('A email is send whith the details of the bookings');
+
+        else $output->writeln('Error send email');
+
     }
 
     public function renderTable($output, $bookings)

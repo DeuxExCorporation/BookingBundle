@@ -73,13 +73,6 @@ class BookingRoom implements  BookingInterface
     /**
      * @var bool
      *
-     * @ORM\Column(name="tax", type="integer")
-     */
-    private $tax;
-
-    /**
-     * @var bool
-     *
      * @ORM\Column(name="total", type="float")
      */
     private $total;
@@ -257,29 +250,6 @@ class BookingRoom implements  BookingInterface
         return $this->priceWithoutTax;
     }
 
-    /**
-     * Set tax
-     *
-     * @param integer $tax
-     *
-     * @return BookingRoom
-     */
-    public function setTax($tax)
-    {
-        $this->tax = $tax;
-
-        return $this;
-    }
-
-    /**
-     * Get tax
-     *
-     * @return integer
-     */
-    public function getTax()
-    {
-        return $this->tax;
-    }
 
     /**
      * Set total

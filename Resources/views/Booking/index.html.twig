@@ -1,0 +1,30 @@
+{% extends "::base.html.twig" %}
+{% block title %}Proyecto Booking{% endblock %}
+{% block body %}
+<div class="col-md-12 alerta">
+
+    {% for type, flashMessage in app.session.flashbag.all() %}
+        {% for flash in flashMessage %}
+            <div class="alert alert-{{ type }} alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>{{ flash.title }}</strong><br>
+                {{ flash.message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+</div>
+<h1>Proyecto Booking</h1>
+
+    {% for booking in bookings %}
+        <div id="booking">
+        <h2>{{ booking.bookingElement.name | capitalize }}</h2><br>
+        <div>
+            Date Start:{{ booking.dateStart | date('d-m-y') }}<br>
+            Date End:{{ booking.dateEnd | date('d-m-y') }}<br>
+            price: {{ booking.total }} Euros
+        </div>
+        </div>
+        <hr>
+    {% endfor %}
+{% endblock %}

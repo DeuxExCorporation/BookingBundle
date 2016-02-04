@@ -11,7 +11,7 @@ use CarlosGude\BookingBundle\Entity\BookingRoom;
  */
 class RoomTypesRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function getFreeRoomTypes(BookingRoom $booking, $day, $type = null)
+    public function getFreeRoomTypes($booking, $day, $type = null)
     {
 
         $em = $this->getEntityManager();
@@ -21,7 +21,7 @@ class RoomTypesRepository extends \Doctrine\ORM\EntityRepository
         $day = new \DateTime($booking->getDateStart()->format('Y-m-d'). '+'. $day .' days');
 
         return $query->select(['r'])
-                     ->from('CarlosGudeBookingBundle:BookingRoom','r')
+                     ->from('AcmeBundle:BookingRoom','r')
                      ->innerJoin('r.bookingElement','t')
                      ->where($query->expr()->eq('r.dateStart',':dateStart'))
                      ->andWhere($query->expr()->eq('r.finalized',':finalized'))

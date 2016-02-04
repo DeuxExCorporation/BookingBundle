@@ -13,7 +13,7 @@ interface RateBookingInterface
 
     public function getDateEnd();
 
-    public function getDefault();
+    public function getStandard();
 
     public function getRate();
 

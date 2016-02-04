@@ -1,0 +1,22 @@
+{% extends 'CarlosGudeBookingBundle:Email:baseEmail.html.twig' %}
+
+{% block base %}
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>Fecha Entrada</td>
+            <td>Fecha Salida</td>
+        </tr>
+
+        {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.identificator }}</td>
+                <td>{{ booking.dateStart | date ('d/m/y') }}</td>
+                <td>{{ booking.dateEnd | date ('d/m/y') }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+{% endblock %}
+

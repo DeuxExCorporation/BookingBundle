@@ -3,6 +3,7 @@
 
 namespace CarlosGude\BookingBundle\Services;
 
+use CarlosGude\BookingBundle\Entity\BookingRoom;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Flash\FlashBag;
 use Symfony\Component\HttpKernel\Exception\HttpException;
@@ -63,6 +64,16 @@ class BookingService
     }
 
     /**
+     * @param $element
+     * @return array
+     */
+    public function getAllBookingElements()
+    {
+        return $this->em->getRepository($this->getBookingConfiguration('class','bookingElementEntity'))
+            ->findAll();
+    }
+
+    /**
      * @return mixed
      */
     public function newBooking()
@@ -78,7 +89,7 @@ class BookingService
      */
     public function saveEntity($entity)
     {
-        if (!is_object($entity)) throw new HttpException(500,$entity. " is not a a object");
+        if (!is_object($entity) or ! $entity instanceof BookingRoom) throw new HttpException(500,$entity. " is not a a object");
         if ($this->getBookingConfiguration('autoSaveBooking'))
         {
             $this->em->persist($entity);
@@ -153,7 +164,7 @@ class BookingService
      * @param $booking
      * @return bool
      */
-    public function checkDisponibility( $booking)
+    public function checkDisponibility($booking)
     {
 
         for ($day = 0; $day <= $this->getDaysBooking($booking) -1; $day++)
@@ -162,8 +173,6 @@ class BookingService
 
         }
 
-
-
         return true;
     }
 
@@ -171,17 +180,21 @@ class BookingService
      * @param $booking
      * @return bool
      */
-    public function bookingRoom($booking)
+    public function bookingRoom($booking, $showFlash = true)
     {
 
         if ($this->checkDisponibility($booking) && $this->validateDate($booking))
         {
-            $this->setFlashMessage('sucess',['title' =>'Reserva correcta','message' => 'Reserva correcta']);
-            return true;
+            $this->calculateRateDiary($booking);
+
+            if ($showFlash)
+            $this->setFlashMessage('success',['title' =>'Reserva correcta','message' => 'Reserva correcta']);
+
+            return $booking;
         }
 
-        $this->setFlashMessage('error',['title' =>'Reserva fallida','message' => 'Reserva fallida']);
-        return false;
+        $this->setFlashMessage('danger',['title' =>'Reserva fallida','message' => 'Reserva fallida']);
+        return $booking;
 
     }
 
@@ -218,17 +231,17 @@ class BookingService
     {
         $class = $this->getBookingConfiguration('class','rateEntity');
 
+
         $rate = $this->em->getRepository($class)->calculatePrice($booking);
 
         return $rate;
     }
 
-    // TODO: 6. Pendiente de mejorar
     public function calculateRateDiary($booking)
     {
         $total = $this->getDaysBooking($booking) * $this->getRate($booking)->getRate() * $booking->getQuantity();
 
-        $booking->setPriceWithoutTax($total)->setTax(23)->setTotal($total *1.23);
+        $booking->setPriceWithoutTax($total)->setTotal($total *(($this->getBookingConfiguration('taxBooking')/100) +1));
 
     }
 

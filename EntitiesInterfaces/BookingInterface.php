@@ -21,6 +21,6 @@ interface BookingInterface
 
     public function getTotal();
 
-    public function getUserEmail();
+    public function getEmailUser();
 
 }

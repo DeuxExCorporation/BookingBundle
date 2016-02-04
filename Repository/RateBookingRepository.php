@@ -19,7 +19,7 @@ class RateBookingRepository extends \Doctrine\ORM\EntityRepository
 
 
         $rate = $query->select(['r','t'])
-                      ->from('CarlosGudeBookingBundle:RateBooking','r')
+                      ->from('AcmeBundle:RateBooking','r')
                       ->innerJoin('r.bookingElement','t')
                       ->where($query->expr()->eq('t.name',':name'))
                       ->setParameters(['name' => $booking->getBookingElement()->getName()]);
